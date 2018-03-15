@@ -14,7 +14,7 @@ Material Mass Source: https://www.toybuilderlabs.com/blogs/news/13053117-filamen
 import struct
 import sys
 print('Choose desired print material of STL file below:')
-material=input('1 = ABS or 2 = PLA or 3 = 3k CFRP or 4 = Plexiglass : ')
+material=input(' 1 = TPU or 2 = TPE or 4 = PLA or 5 = CarbonPla or 6 = 3k CFRP or 7 = Plexiglass or 8 = ABS : ')
 class STLUtils:
     def resetVariables(self):
         self.normals = []
@@ -67,14 +67,22 @@ class STLUtils:
         
     def calculateMassCM3(self,totalVolume):
     	totalMass = 0
-    	if material in {'1','ABS'}:
-            totalMass = (totalVolume*1.04)
-        elif material in {'2','PLA'}:
-            totalMass = (totalVolume*1.25)
-        elif material in {'3','CFRP'}:
+        if material in {'1','TPU'}:
+            totalMass = (totalVolume*1.24)
+        elif material in {'2','TPE'}:
+            totalMass = (totalVolume*0.96)
+        elif material in {'3','PETg'}:
+            totalMass = (totalVolume*1.27)
+        elif material in {'4','PLA'}:
+            totalMass = (totalVolume*1.24)
+        elif material in {'5','CarbonPLA'}:
+            totalMass = (totalVolume*1.24)
+        elif material in {'6','CFRP'}:
             totalMass = (totalVolume*1.79)
-        elif material in {'4','Plexiglass'}:
+        elif material in {'7','Plexiglass'}:
             totalMass = (totalVolume*1.18)
+        elif material in {'8','ABS'}:
+            totalMass = (totalVolume*1.05)
         return totalMass
 
     def calculateVolume(self,infilename, unit):
